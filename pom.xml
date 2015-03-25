@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.krenfro</groupId>
     <artifactId>eztexting-java</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <packaging>jar</packaging>
     <name>eztexting-java</name>
     <description>A Java client for the EZ Texting SMS text messaging API</description>
@@ -80,7 +80,8 @@
         <connection>scm:git:https://github.com/krenfro/eztexting-java.git</connection>
         <developerConnection>scm:git:https://github.com/krenfro/eztexting-java.git</developerConnection>
         <url>https://github.com/krenfro/eztexting-java</url>
-    </scm>
+      <tag>eztexting-java-0.0.1</tag>
+  </scm>
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
