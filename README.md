@@ -32,7 +32,8 @@ If you need a feature implemented, please submit a pull request or file an issue
 ### Sending a SMS message
 
 ```java
-    EzTextingClient ez = new EzTextingClient(new EzTextingCredentials("username","password"));
+    EzTextingClient ez = new EzTextingClient(
+        new EzTextingCredentials("username","password"));
     Messaging messaging = new Messaging(ez);
     Message message = new Message.Builder()
         .subject("test")
@@ -50,7 +51,8 @@ If you need a feature implemented, please submit a pull request or file an issue
     GroupQuery query = new GroupQuery.Builder()
         .sortBy(GROUP_NAME)
         .itemsPerPage(10)
-        .page(1);
+        .page(1)
+        .build();
     List<Group> all = groups.retrieveAll(query);
 ```
 
@@ -70,7 +72,7 @@ If you need a feature implemented, please submit a pull request or file an issue
 
     UpdateRequest update = new UpdateRequest.Builder()
         .email("another@email.com")
-        .group("group1")
+        .group("group1", "group3")
         .build();
     contact = contacts.update(contact, update);
     contacts.delete(contact);
