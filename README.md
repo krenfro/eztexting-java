@@ -90,7 +90,7 @@ If you need a feature implemented, please submit a pull request or file an issue
 
 
 ## Maven 2 Support
-This library (will soon) be in the Maven Central Repository. 
+This library is in the Maven Central Repository. 
 
     <dependencies>
         <dependency>
