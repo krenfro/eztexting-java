@@ -4,16 +4,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 @JsonRootName(value = "Response")
-class ContactResponse extends Response {
+class CarrierLookupResponse extends Response {
     
     @JsonProperty("Entry")
-    private Contact contact;
+    private Carrier carrier;
 
-    public Contact getContact(){
-        return contact;
-    }
-
-    public void setContact(Contact contact){
-        this.contact = contact;
+    public String getCarrierName(){
+        return carrier.toString();
     }
 }

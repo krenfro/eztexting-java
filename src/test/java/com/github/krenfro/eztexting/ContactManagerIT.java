@@ -108,10 +108,10 @@ public class ContactManagerIT {
             .build();
         Contact contact = contactManager.create(request);
         Group group = groupManager.create("JUNIT");        
-        UpdateRequest update = new UpdateRequest.Builder()
+        UpdateRequest update = new UpdateRequest.Builder(contact)
             .phone(TEST_PHONE2)
             .group("JUNIT").build();                                      
-        contact = contactManager.update(contact, update);
+        contact = contactManager.update(update);
         assertEquals(TEST_PHONE2, contact.getPhoneNumber());
         assertFalse(contact.getGroups().isEmpty());
         assertTrue(contact.getGroups().contains(group.getName()));        

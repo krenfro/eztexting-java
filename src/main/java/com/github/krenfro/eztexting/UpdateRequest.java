@@ -6,11 +6,19 @@ import javax.ws.rs.core.MultivaluedMap;
 
 public class UpdateRequest {
 
+    private final Contact contact;
     private final MultivaluedMap values;
     
-    private UpdateRequest(MultivaluedMap values){
+    private UpdateRequest(Contact contact, MultivaluedMap values){
+        Objects.requireNonNull(contact);
+        Objects.requireNonNull(values);
+        this.contact = contact;
         this.values = new MultivaluedMapImpl();
         this.values.putAll(values);
+    }
+    
+    Contact getContact(){
+        return contact;
     }
     
     MultivaluedMap getValues(){
@@ -19,7 +27,13 @@ public class UpdateRequest {
     
     public static class Builder{
 
-        MultivaluedMap values = new MultivaluedMapImpl();
+        private MultivaluedMap values = new MultivaluedMapImpl();
+        private Contact contact;
+        
+        public Builder(Contact contact){
+            Objects.requireNonNull(contact);
+            this.contact = contact;
+        }
         
         public Builder phone(String phone){
             Objects.requireNonNull(phone);
@@ -65,7 +79,7 @@ public class UpdateRequest {
         }
         
         public UpdateRequest build(){
-            return new UpdateRequest(values);
+            return new UpdateRequest(contact, values);
         }
     }
     

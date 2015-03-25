@@ -2,7 +2,6 @@ package com.github.krenfro.eztexting;
 
 public class EzTextingCredentials {
 
-    
     private final String username;
     private final String password;
 

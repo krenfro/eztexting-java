@@ -107,20 +107,20 @@ public class ContactManager {
     }
     
         
-    public Contact update(Contact contact, UpdateRequest update) throws IOException{
+    public Contact update(UpdateRequest update) throws IOException{
         
-        Objects.requireNonNull(contact);
+        
         Objects.requireNonNull(update);
         WebResource target = ez.getRootResource()
                 .path("contacts")
-                .path(contact.getId())
+                .path(update.getContact().getId())
                 .queryParam("format", "json");        
         MultivaluedMap<String,String> form = update.getValues();
         form.add("User", ez.getCredentials().getUsername());
         form.add("Password", ez.getCredentials().getPassword());
-        form.add("ID", contact.getId());        
+        form.add("ID", update.getContact().getId());        
         if (!form.containsKey("PhoneNumber")){
-            form.add("PhoneNumber", contact.getPhoneNumber());
+            form.add("PhoneNumber", update.getContact().getPhoneNumber());
         }
         ClientResponse response = target
                 .type(MediaType.APPLICATION_FORM_URLENCODED_TYPE)
