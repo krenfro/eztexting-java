@@ -5,21 +5,16 @@ A Java client for the [EZ Texting](http://www.eztexting.com) SMS text message AP
 
 [EZ Texting](https://www.eztexting.com) provides an [API](https://www.eztexting.com/developers/sms-api-documentation/rest) for sending SMS text messages. 
 
-You will need an account to use this library.
-
-Consult the [API Documentation](https://www.eztexting.com/developers/sms-api-documentation/rest)
+You will need an account to use this library.  Consult the [API Documentation](https://www.eztexting.com/developers/sms-api-documentation/rest)
 
 This library does _not_ implement all the features of their API.  
-
 This library can:
-
 - Send SMS messages
 - Manage Contacts
 - Manage Groups
 - Carrier Lookup
 
 This library cannot:
-
 - Manage Inbox
 - Manage Keywords
 - Manage Credits 
