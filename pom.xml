@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.github.krenfro</groupId>
     <artifactId>eztexting-java</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>eztexting-java</name>
+    <description>A Java client for the EZ Texting SMS text messaging API</description>
+    <url>https://github.com/krenfro/eztexting-java</url>
     <properties>
-        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>  
     <build>
@@ -40,9 +40,9 @@
         </developer>
     </developers>
     <scm>
-        <connection>scm:git:https://github.com/krenfro/eztexting-java</connection>
-        <url>https://github.com/krenfro/eztexting-java</url>
-        <tag>HEAD</tag>
+        <connection>scm:git:git@github.com:krenfro/eztexting-java.git</connection>
+        <developerConnection>scm:git:git@github.com:krenfro/eztexting-java.git</developerConnection>
+        <url>git@github.com:krenfro/eztexting-java.git</url>
     </scm>
     <distributionManagement>
         <repository>
