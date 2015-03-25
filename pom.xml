@@ -77,8 +77,8 @@
         </developer>
     </developers>
     <scm>
-        <connection>scm:git:https://github.com/krenfro/eztexting-java</connection>
-        <developerConnection>scm:git:https://github.com/krenfro/eztexting-java</developerConnection>
+        <connection>scm:git:https://github.com/krenfro/eztexting-java.git</connection>
+        <developerConnection>scm:git:https://github.com/krenfro/eztexting-java.git</developerConnection>
         <url>https://github.com/krenfro/eztexting-java</url>
     </scm>
     <distributionManagement>
