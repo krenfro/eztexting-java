@@ -44,7 +44,7 @@ If you need a feature implemented, please submit a pull request or file an issue
     GroupManager groups = new GroupManager(ez);
     Group group = groups.create("neat");
     GroupQuery query = new GroupQuery.Builder()
-        .sortBy(GROUP_NAME)
+        .sortBy(SortBy.GROUP_NAME)
         .itemsPerPage(10)
         .page(1)
         .build();
@@ -71,6 +71,15 @@ If you need a feature implemented, please submit a pull request or file an issue
         .build();
     contact = contacts.update(contact, update);
     contacts.delete(contact);
+    
+    ContactQuery query = new ContactQuery.Builder()
+        .query("5551234567")
+        .sortBy(SortBy.LAST_NAME)
+        .ascending()
+        .itemsPerPage(100)
+        .build();
+    List<Contact> found = contactManager.retrieveAll(query);
+    
 ```
 
 
