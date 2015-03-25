@@ -1,5 +1,5 @@
 # eztexting-java
-A Java client for the [EZ Texting](http://www.eztexting.com) SMS text message API
+A Java client for the [EZ Texting](http://www.eztexting.com) SMS text messaging API
 
 ## Overview
 
