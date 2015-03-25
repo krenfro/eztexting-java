@@ -91,7 +91,6 @@ If you need a feature implemented, please submit a pull request or file an issue
 
 ## Maven 2 Support
 This library (will soon) be in the Maven Central Repository. 
-If you use Maven 2 for your builds, here is the stuff to put in your pom.xml
 
     <dependencies>
         <dependency>
