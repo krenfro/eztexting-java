@@ -8,7 +8,7 @@ public class TestCredentials extends EzTextingCredentials {
     private static final Logger logger = Logger.getLogger(TestCredentials.class.getName());
     
     public TestCredentials(){
-        super("CHANGEME", "PASSWORD");
+        super(System.getProperty("EZUSERNAME"), System.getProperty("EZPASSWORD"));
         logger.log(
                 Level.CONFIG, 
                 "Using test credentials [{0}] for integration tests. @see TestCredentials.java", 

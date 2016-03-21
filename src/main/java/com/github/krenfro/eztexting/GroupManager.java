@@ -3,11 +3,14 @@ package com.github.krenfro.eztexting;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
-import java.io.IOException;
-import java.util.*;
-import java.util.Map.Entry;
+
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Objects;
 
 public class GroupManager {
     
@@ -24,20 +27,54 @@ public class GroupManager {
      * @return all groups, never null
      * @throws IOException 
      */
-    public List<Group> retrieveAll(GroupQuery query) throws IOException{           
+    public List<Group> retrieveAll(GroupQuery query) throws IOException{
+
+
         WebResource target = ez.getRootResource()
                 .path("groups")
                 .queryParam("format", "json")
                 .queryParam("User", ez.getCredentials().getUsername())
-                .queryParam("Password", ez.getCredentials().getPassword());
-        
+                .queryParam("Password", ez.getCredentials().getPassword())
+                .queryParam("itemsPerPage", "100")
+                .queryParam("page","1");
+
         if (query != null){
             for (Entry<String,String> entry: query.getValues().entrySet()){
                 target = target.queryParam(entry.getKey(), entry.getValue());
             }
         }
-        
-        ClientResponse response = target.get(ClientResponse.class);        
+
+        ClientResponse response = target.get(ClientResponse.class);
+        String json = response.getEntity(String.class);
+        List<Group> groups = new ArrayList<>();
+        int page = 1;
+        List<Group> partial = retrieveAll(query, 100, page);
+        groups.addAll(partial);
+        while (partial.size() == 100){
+            page++;
+            partial = retrieveAll(query, 100, page);
+            groups.addAll(partial);
+        }
+
+        return groups;
+    }
+
+    private List<Group> retrieveAll(GroupQuery query, int itemsPerPage, int page) throws IOException{
+        WebResource target = ez.getRootResource()
+                .path("groups")
+                .queryParam("format", "json")
+                .queryParam("User", ez.getCredentials().getUsername())
+                .queryParam("Password", ez.getCredentials().getPassword())
+                .queryParam("itemsPerPage", "" + itemsPerPage)
+                .queryParam("page", "" + page);
+
+        if (query != null){
+            for (Entry<String,String> entry: query.getValues().entrySet()){
+                target = target.queryParam(entry.getKey(), entry.getValue());
+            }
+        }
+
+        ClientResponse response = target.get(ClientResponse.class);
         String json = response.getEntity(String.class);
         List<Group> groups = new ArrayList<>();
         GroupsResponse parsed = ez.getJackson().readValue(json, GroupsResponse.class);
@@ -46,10 +83,13 @@ public class GroupManager {
         }
         else{
             throw new EzTextingException(parsed);
-        }        
+        }
         return groups;
     }
-    
+
+
+
+
     /**
      * Retrieve Group by id.
      * @param id

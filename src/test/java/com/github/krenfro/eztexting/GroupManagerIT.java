@@ -1,14 +1,16 @@
 package com.github.krenfro.eztexting;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.junit.AfterClass;
-import org.junit.Test;
+
 import static org.junit.Assert.*;
-import org.junit.BeforeClass;
 
 public class GroupManagerIT {
 
@@ -17,7 +19,7 @@ public class GroupManagerIT {
     private final String groupName;
     
     public GroupManagerIT() {
-        groupName = (TEST_GROUP_PREFIX + Math.abs(new Random().nextInt())).substring(0, 11);
+        groupName = (TEST_GROUP_PREFIX + Math.abs(new Random().nextInt())).substring(0, 9);
     }    
     
     @AfterClass
@@ -43,7 +45,7 @@ public class GroupManagerIT {
             fail("expected EzTextingException");
         }
         catch(EzTextingException ex){
-            assertEquals("401", ex.getCode());
+            assertEquals("403", ex.getCode());
         }
         assertNotNull(groupManager);
     }
