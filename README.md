@@ -96,7 +96,7 @@ This library is in the Maven Central Repository.
         <dependency>
             <groupId>com.github.krenfro</groupId>
             <artifactId>eztexting-java</artifactId>
-            <version>0.0.1</version>
+            <version>0.0.3</version>
         </dependency>
     </dependencies>
 
